@@ -10,9 +10,9 @@ export function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
 }
 
 /**
- * get all roles
+ * 获取所有角色
  *
- * these roles are all enabled
+ * 这些角色都是已启用的
  */
 export function fetchGetAllRoles() {
   return request<Api.SystemManage.AllRole[]>({

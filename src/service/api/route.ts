@@ -1,11 +1,11 @@
 import { request } from '../request';
 
-/** get constant routes */
+/** 获取常量路由 */
 export function fetchGetConstantRoutes() {
   return request<Api.Route.MenuRoute[]>({ url: '/route/getConstantRoutes' });
 }
 
-/** get user routes */
+/** 获取用户路由 */
 export function fetchGetUserRoutes() {
   return request<Api.Route.UserRoute>({ url: '/route/getUserRoutes' });
 }
