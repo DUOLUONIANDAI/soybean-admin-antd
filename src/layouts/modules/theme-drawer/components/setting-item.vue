@@ -4,7 +4,7 @@ defineOptions({
 });
 
 interface Props {
-  /** Label */
+  /** 标签 */
   label: string;
 }
 

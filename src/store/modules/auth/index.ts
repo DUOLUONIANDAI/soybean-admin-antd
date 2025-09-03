@@ -27,17 +27,17 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     buttons: []
   });
 
-  /** is super role in static route */
+  /** 是否为静态路由中的超级角色 */
   const isStaticSuper = computed(() => {
     const { VITE_AUTH_ROUTE_MODE, VITE_STATIC_SUPER_ROLE } = import.meta.env;
 
     return VITE_AUTH_ROUTE_MODE === 'static' && userInfo.roles.includes(VITE_STATIC_SUPER_ROLE);
   });
 
-  /** Is login */
+  /** 是否已登录 */
   const isLogin = computed(() => Boolean(token.value));
 
-  /** Reset auth store */
+  /** 重置认证存储 */
   async function resetStore() {
     const authStore = useAuthStore();
 
@@ -54,11 +54,11 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   }
 
   /**
-   * Login
+   * 登录
    *
-   * @param userName User name
-   * @param password Password
-   * @param [redirect=true] Whether to redirect after login. Default is `true`
+   * @param userName 用户名
+   * @param password 密码
+   * @param [redirect=true] 登录后是否重定向。默认为 `true`
    */
   async function login(userName: string, password: string, redirect = true) {
     startLoading();

@@ -1,4 +1,4 @@
-/** The union key namespace */
+/** 联合键命名空间 */
 declare namespace UnionKey {
   /**
    * The login module
@@ -11,7 +11,7 @@ declare namespace UnionKey {
    */
   type LoginModule = 'pwd-login' | 'code-login' | 'register' | 'reset-pwd' | 'bind-wechat';
 
-  /** Theme scheme */
+  /** 主题方案 */
   type ThemeScheme = 'light' | 'dark' | 'auto';
 
   /**
@@ -40,7 +40,7 @@ declare namespace UnionKey {
    */
   type ThemeScrollMode = import('@sa/materials').LayoutScrollMode;
 
-  /** Page animate mode */
+  /** 页面动画模式 */
   type ThemePageAnimateMode = 'fade' | 'fade-slide' | 'fade-bottom' | 'fade-scale' | 'zoom-fade' | 'zoom-out' | 'none';
 
   /**
@@ -51,7 +51,7 @@ declare namespace UnionKey {
    */
   type ThemeTabMode = import('@sa/materials').PageTabMode;
 
-  /** Unocss animate key */
+  /** Unocss动画键 */
   type UnoCssAnimateKey =
     | 'pulse'
     | 'bounce'

@@ -11,7 +11,7 @@ defineOptions({
 });
 
 interface Props {
-  /** Show padding for content */
+  /** 是否显示内容的内边距 */
   showPadding?: boolean;
 }
 

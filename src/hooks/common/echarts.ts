@@ -75,10 +75,10 @@ interface ChartHooks {
 }
 
 /**
- * use echarts
+ * 使用echarts
  *
- * @param optionsFactory echarts options factory function
- * @param darkMode dark mode
+ * @param optionsFactory echarts选项工厂函数
+ * @param darkMode 暗黑模式
  */
 export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: ChartHooks = {}) {
   const scope = effectScope();
@@ -112,23 +112,23 @@ export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: C
   } = hooks;
 
   /**
-   * whether can render chart
+   * 是否可以渲染图表
    *
-   * when domRef is ready and initialSize is valid
+   * 当domRef准备就绪且initialSize有效时
    */
   function canRender() {
     return domRef.value && initialSize.width > 0 && initialSize.height > 0;
   }
 
-  /** is chart rendered */
+  /** 图表是否已渲染 */
   function isRendered() {
     return Boolean(domRef.value && chart);
   }
 
   /**
-   * update chart options
+   * 更新图表选项
    *
-   * @param callback callback function
+   * @param callback 回调函数
    */
   async function updateOptions(callback: (opts: T, optsFactory: () => T) => ECOption = () => chartOptions) {
     if (!isRendered()) return;
@@ -150,7 +150,7 @@ export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: C
     chart?.setOption(options);
   }
 
-  /** render chart */
+  /** 渲染图表 */
   async function render() {
     if (!isRendered()) {
       const chartTheme = darkMode.value ? 'dark' : 'light';
@@ -165,12 +165,12 @@ export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: C
     }
   }
 
-  /** resize chart */
+  /** 调整图表大小 */
   function resize() {
     chart?.resize();
   }
 
-  /** destroy chart */
+  /** 销毁图表 */
   async function destroy() {
     if (!chart) return;
 
@@ -179,7 +179,7 @@ export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: C
     chart = null;
   }
 
-  /** change chart theme */
+  /** 更改图表主题 */
   async function changeTheme() {
     await destroy();
     await render();
@@ -187,10 +187,10 @@ export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: C
   }
 
   /**
-   * render chart by size
+   * 根据大小渲染图表
    *
-   * @param w width
-   * @param h height
+   * @param w 宽度
+   * @param h 高度
    */
   async function renderChartBySize(w: number, h: number) {
     initialSize.width = w;

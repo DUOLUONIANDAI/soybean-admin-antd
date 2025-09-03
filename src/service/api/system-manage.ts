@@ -1,6 +1,6 @@
 import { request } from '../request';
 
-/** get role list */
+/** 获取角色列表 */
 export function fetchGetRoleList(params?: Api.SystemManage.RoleSearchParams) {
   return request<Api.SystemManage.RoleList>({
     url: '/systemManage/getRoleList',
@@ -21,7 +21,7 @@ export function fetchGetAllRoles() {
   });
 }
 
-/** get user list */
+/** 获取用户列表 */
 export function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
   return request<Api.SystemManage.UserList>({
     url: '/systemManage/getUserList',
@@ -30,7 +30,7 @@ export function fetchGetUserList(params?: Api.SystemManage.UserSearchParams) {
   });
 }
 
-/** get menu list */
+/** 获取菜单列表 */
 export function fetchGetMenuList() {
   return request<Api.SystemManage.MenuList>({
     url: '/systemManage/getMenuList/v2',
@@ -38,7 +38,7 @@ export function fetchGetMenuList() {
   });
 }
 
-/** get all pages */
+/** 获取所有页面 */
 export function fetchGetAllPages() {
   return request<string[]>({
     url: '/systemManage/getAllPages',
@@ -46,7 +46,7 @@ export function fetchGetAllPages() {
   });
 }
 
-/** get menu tree */
+/** 获取菜单树 */
 export function fetchGetMenuTree() {
   return request<Api.SystemManage.MenuTree[]>({
     url: '/systemManage/getMenuTree',

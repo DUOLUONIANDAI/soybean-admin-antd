@@ -1,6 +1,6 @@
 export interface RequestInstanceState {
-  /** whether the request is refreshing token */
+  /** 请求是否正在刷新token */
   refreshTokenFn: Promise<boolean> | null;
-  /** the request error message stack */
+  /** 请求错误消息堆栈 */
   errMsgStack: string[];
 }

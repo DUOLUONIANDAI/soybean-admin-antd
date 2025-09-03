@@ -10,9 +10,9 @@ defineOptions({
 });
 
 interface Props {
-  /** the type of operation */
+  /** 操作类型 */
   operateType: AntDesign.TableOperateType;
-  /** the edit row data */
+  /** 编辑的行数据 */
   rowData?: Api.SystemManage.User | null;
 }
 
@@ -65,7 +65,7 @@ const rules: Record<RuleKey, App.Global.FormRule> = {
   status: defaultRequiredRule
 };
 
-/** the enabled role options */
+/** 启用的角色选项 */
 const roleOptions = ref<CommonType.Option<string>[]>([]);
 
 async function getRoleOptions() {
@@ -77,8 +77,8 @@ async function getRoleOptions() {
       value: item.roleCode
     }));
 
-    // the mock data does not have the roleCode, so fill it
-    // if the real request, remove the following code
+    // 模拟数据没有roleCode，所以填充它
+    // 如果是真实请求，请删除以下代码
     const userRoleOptions = model.value.userRoles.map(item => ({
       label: item,
       value: item

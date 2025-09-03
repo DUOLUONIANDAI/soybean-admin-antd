@@ -4,20 +4,20 @@
  * It is used to declare the type of the import.meta object
  */
 declare namespace Env {
-  /** The router history mode */
+  /** 路由历史模式 */
   type RouterHistoryMode = 'hash' | 'history' | 'memory';
 
-  /** Interface for import.meta */
+  /** import.meta接口 */
   interface ImportMeta extends ImportMetaEnv {
-    /** The base url of the application */
+    /** 应用基础URL */
     readonly VITE_BASE_URL: string;
-    /** The title of the application */
+    /** 应用标题 */
     readonly VITE_APP_TITLE: string;
-    /** The description of the application */
+    /** 应用描述 */
     readonly VITE_APP_DESC: string;
-    /** The router history mode */
+    /** 路由历史模式 */
     readonly VITE_ROUTER_HISTORY_MODE?: RouterHistoryMode;
-    /** The prefix of the iconify icon */
+    /** Iconify图标前缀 */
     readonly VITE_ICON_PREFIX: 'icon';
     /**
      * The prefix of the local icon
@@ -25,7 +25,7 @@ declare namespace Env {
      * This prefix is start with the icon prefix
      */
     readonly VITE_ICON_LOCAL_PREFIX: 'local-icon';
-    /** backend service base url */
+    /** 后端服务基础URL */
     readonly VITE_SERVICE_BASE_URL: string;
     /**
      * success code of backend service
@@ -57,7 +57,7 @@ declare namespace Env {
      * use "," to separate multiple codes
      */
     readonly VITE_SERVICE_EXPIRED_TOKEN_CODES: string;
-    /** when the route mode is static, the defined super role */
+    /** 当路由模式为静态时，定义的超级角色 */
     readonly VITE_STATIC_SUPER_ROLE: string;
     /**
      * other backend service base url
@@ -91,7 +91,7 @@ declare namespace Env {
      * Iconify icon name
      */
     readonly VITE_MENU_ICON: string;
-    /** Whether to build with sourcemap */
+    /** 是否使用sourcemap构建 */
     readonly VITE_SOURCE_MAP?: CommonType.YesOrNo;
     /**
      * Iconify api provider url
@@ -101,9 +101,9 @@ declare namespace Env {
      * @link https://docs.iconify.design/api/providers.html
      */
     readonly VITE_ICONIFY_URL?: string;
-    /** Used to differentiate storage across different domains */
+    /** 用于区分不同域的存储 */
     readonly VITE_STORAGE_PREFIX?: string;
-    /** Whether to automatically detect updates after configuring application packaging */
+    /** 配置应用打包后是否自动检测更新 */
     readonly VITE_AUTOMATICALLY_DETECT_UPDATE?: CommonType.YesOrNo;
   }
 }

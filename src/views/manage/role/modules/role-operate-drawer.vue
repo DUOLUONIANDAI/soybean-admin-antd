@@ -12,9 +12,9 @@ defineOptions({
 });
 
 interface Props {
-  /** the type of operation */
+  /** 操作类型 */
   operateType: AntDesign.TableOperateType;
-  /** the edit row data */
+  /** 编辑的行数据 */
   rowData?: Api.SystemManage.Role | null;
 }
 

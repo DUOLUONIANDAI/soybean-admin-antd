@@ -186,7 +186,7 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     openDrawer();
   }
 
-  /** the editing row data */
+  /** 正在编辑的行数据 */
   const editingData: Ref<T | null> = ref(null);
 
   function handleEdit(id: T['id']) {
@@ -197,7 +197,7 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     openDrawer();
   }
 
-  /** the checked row keys of table */
+  /** 表格中选中的行键 */
   const checkedRowKeys: Ref<T['id'][]> = ref([]);
 
   function onSelectChange(keys: (string | number)[]) {
@@ -213,7 +213,7 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     };
   });
 
-  /** the hook after the batch delete operation is completed */
+  /** 批量删除操作完成后的钩子 */
   async function onBatchDeleted() {
     window.$message?.success($t('common.deleteSuccess'));
 
@@ -222,7 +222,7 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     await getData();
   }
 
-  /** the hook after the delete operation is completed */
+  /** 删除操作完成后的钩子 */
   async function onDeleted() {
     window.$message?.success($t('common.deleteSuccess'));
 

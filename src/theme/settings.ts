@@ -1,4 +1,4 @@
-/** Default theme settings */
+/** 默认主题设置 */
 export const themeSettings: App.Theme.ThemeSetting = {
   themeScheme: 'light',
   grayscale: false,

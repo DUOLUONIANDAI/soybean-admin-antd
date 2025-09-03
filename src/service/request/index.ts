@@ -14,7 +14,8 @@ export const request = createFlatRequest<App.Service.Response, RequestInstanceSt
   {
     baseURL,
     headers: {
-      apifoxToken: 'XL299LiMEDZ0H5h3A29PxwQXdMJqWyY2'
+      apifoxToken: 'XL299LiMEDZ0H5h3A29PxwQXdMJqWyY2',
+      Authorization: getAuthorization()
     }
   },
   {
@@ -25,8 +26,8 @@ export const request = createFlatRequest<App.Service.Response, RequestInstanceSt
       return config;
     },
     isBackendSuccess(response) {
-      // when the backend response code is "0000"(default), it means the request is success
-      // to change this logic by yourself, you can modify the `VITE_SERVICE_SUCCESS_CODE` in `.env` file
+      // 当后端响应码为"0000"（默认）时，表示请求成功
+      // 要更改此逻辑，您可以在`.env`文件中修改`VITE_SERVICE_SUCCESS_CODE`
       return String(response.data.code) === import.meta.env.VITE_SERVICE_SUCCESS_CODE;
     },
     async onBackendFail(response, instance) {
@@ -44,14 +45,14 @@ export const request = createFlatRequest<App.Service.Response, RequestInstanceSt
         request.state.errMsgStack = request.state.errMsgStack.filter(msg => msg !== response.data.msg);
       }
 
-      // when the backend response code is in `logoutCodes`, it means the user will be logged out and redirected to login page
+      // 当后端响应码在`logoutCodes`中时，表示用户将被登出并重定向到登录页面
       const logoutCodes = import.meta.env.VITE_SERVICE_LOGOUT_CODES?.split(',') || [];
       if (logoutCodes.includes(responseCode)) {
         handleLogout();
         return null;
       }
 
-      // when the backend response code is in `modalLogoutCodes`, it means the user will be logged out by displaying a modal
+      // 当后端响应码在`modalLogoutCodes`中时，表示用户将通过显示模态框被登出
       const modalLogoutCodes = import.meta.env.VITE_SERVICE_MODAL_LOGOUT_CODES?.split(',') || [];
       if (modalLogoutCodes.includes(responseCode) && !request.state.errMsgStack?.includes(responseCode)) {
         request.state.errMsgStack = [...(request.state.errMsgStack || []), response.data.msg];
@@ -75,8 +76,8 @@ export const request = createFlatRequest<App.Service.Response, RequestInstanceSt
         return null;
       }
 
-      // when the backend response code is in `expiredTokenCodes`, it means the token is expired, and refresh token
-      // the api `refreshToken` can not return error code in `expiredTokenCodes`, otherwise it will be a dead loop, should return `logoutCodes` or `modalLogoutCodes`
+      // 当后端响应码在`expiredTokenCodes`中时，表示令牌已过期，需要刷新令牌
+      // `refreshToken` API不能返回`expiredTokenCodes`中的错误码，否则会形成死循环，应该返回`logoutCodes`或`modalLogoutCodes`
       const expiredTokenCodes = import.meta.env.VITE_SERVICE_EXPIRED_TOKEN_CODES?.split(',') || [];
       if (expiredTokenCodes.includes(responseCode)) {
         const success = await handleExpiredRequest(request.state);
@@ -94,7 +95,7 @@ export const request = createFlatRequest<App.Service.Response, RequestInstanceSt
       return response.data.data;
     },
     onError(error) {
-      // when the request is fail, you can show error message
+      // 当请求失败时，可以显示错误消息
 
       let message = error.message;
       let backendErrorCode = '';
@@ -130,7 +131,7 @@ export const demoRequest = createRequest<App.Service.DemoResponse>(
     async onRequest(config) {
       const { headers } = config;
 
-      // set token
+      // 设置令牌
       const token = localStg.get('token');
       const Authorization = token ? `Bearer ${token}` : null;
       Object.assign(headers, { Authorization });
@@ -138,23 +139,23 @@ export const demoRequest = createRequest<App.Service.DemoResponse>(
       return config;
     },
     isBackendSuccess(response) {
-      // when the backend response code is "200", it means the request is success
-      // you can change this logic by yourself
+      // 当后端响应码为"200"时，表示请求成功
+      // 您可以自行更改此逻辑
       return response.data.status === '200';
     },
     async onBackendFail(_response) {
-      // when the backend response code is not "200", it means the request is fail
-      // for example: the token is expired, refresh token and retry request
+      // 当后端响应码不是"200"时，表示请求失败
+      // 例如：令牌已过期，刷新令牌并重试请求
     },
     transformBackendResponse(response) {
       return response.data.result;
     },
     onError(error) {
-      // when the request is fail, you can show error message
+      // 当请求失败时，可以显示错误消息
 
       let message = error.message;
 
-      // show backend error message
+      // 显示后端错误消息
       if (error.code === BACKEND_ERROR_CODE) {
         message = error.response?.data?.message || message;
       }

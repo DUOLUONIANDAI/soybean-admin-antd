@@ -1,32 +1,32 @@
-/** The global namespace for the app */
+/** 应用的全局命名空间 */
 declare namespace App {
-  /** Theme namespace */
+  /** 主题命名空间 */
   namespace Theme {
     type ColorPaletteNumber = import('@sa/color').ColorPaletteNumber;
 
-    /** Theme setting */
+    /** 主题设置 */
     interface ThemeSetting {
-      /** Theme scheme */
+      /** 主题方案 */
       themeScheme: UnionKey.ThemeScheme;
-      /** grayscale mode */
+      /** 灰度模式 */
       grayscale: boolean;
-      /** colour weakness mode */
+      /** 色弱模式 */
       colourWeakness: boolean;
-      /** Whether to recommend color */
+      /** 是否推荐颜色 */
       recommendColor: boolean;
-      /** Theme color */
+      /** 主题颜色 */
       themeColor: string;
-      /** Other color */
+      /** 其他颜色 */
       otherColor: OtherColor;
-      /** Whether info color is followed by the primary color */
+      /** 信息颜色是否跟随主色 */
       isInfoFollowPrimary: boolean;
-      /** Reset cache strategy */
+      /** 重置缓存策略 */
       resetCacheStrategy: UnionKey.ResetCacheStrategy;
-      /** Layout */
+      /** 布局 */
       layout: {
-        /** Layout mode */
+        /** 布局模式 */
         mode: UnionKey.ThemeLayoutMode;
-        /** Scroll mode */
+        /** 滚动模式 */
         scrollMode: UnionKey.ThemeScrollMode;
         /**
          * Whether to reverse the horizontal mix
@@ -35,28 +35,28 @@ declare namespace App {
          */
         reverseHorizontalMix: boolean;
       };
-      /** Page */
+      /** 页面 */
       page: {
-        /** Whether to show the page transition */
+        /** 是否显示页面过渡 */
         animate: boolean;
-        /** Page animate mode */
+        /** 页面动画模式 */
         animateMode: UnionKey.ThemePageAnimateMode;
       };
-      /** Header */
+      /** 头部 */
       header: {
-        /** Header height */
+        /** 头部高度 */
         height: number;
-        /** Header breadcrumb */
+        /** 头部面包屑 */
         breadcrumb: {
-          /** Whether to show the breadcrumb */
+          /** 是否显示面包屑 */
           visible: boolean;
-          /** Whether to show the breadcrumb icon */
+          /** 是否显示面包屑图标 */
           showIcon: boolean;
         };
       };
-      /** Tab */
+      /** 标签页 */
       tab: {
-        /** Whether to show the tab */
+        /** 是否显示标签页 */
         visible: boolean;
         /**
          * Whether to cache the tab
@@ -64,47 +64,47 @@ declare namespace App {
          * If cache, the tabs will get from the local storage when the page is refreshed
          */
         cache: boolean;
-        /** Tab height */
+        /** 标签页高度 */
         height: number;
-        /** Tab mode */
+        /** 标签页模式 */
         mode: UnionKey.ThemeTabMode;
       };
-      /** Fixed header and tab */
+      /** 固定头部和标签页 */
       fixedHeaderAndTab: boolean;
-      /** Sider */
+      /** 侧边栏 */
       sider: {
-        /** Inverted sider */
+        /** 反转侧边栏 */
         inverted: boolean;
-        /** Sider width */
+        /** 侧边栏宽度 */
         width: number;
-        /** Collapsed sider width */
-        collapsedWidth: number;
-        /** Sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixWidth: number;
-        /** Collapsed sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixCollapsedWidth: number;
-        /** Child menu width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixChildMenuWidth: number;
+        /** 折叠侧边栏宽度 */
+      collapsedWidth: number;
+        /** 混合布局下的侧边栏宽度 */
+      mixWidth: number;
+        /** 混合布局下的折叠侧边栏宽度 */
+      mixCollapsedWidth: number;
+        /** 混合布局下的子菜单宽度 */
+      mixChildMenuWidth: number;
       };
-      /** Footer */
-      footer: {
-        /** Whether to show the footer */
-        visible: boolean;
-        /** Whether fixed the footer */
-        fixed: boolean;
-        /** Footer height */
-        height: number;
-        /** Whether float the footer to the right when the layout is 'horizontal-mix' */
-        right: boolean;
+      /** 底部 */
+    footer: {
+        /** 是否显示底部 */
+      visible: boolean;
+        /** 是否固定底部 */
+      fixed: boolean;
+        /** 底部高度 */
+      height: number;
+        /** 在水平混合布局下是否将底部浮动到右侧 */
+      right: boolean;
       };
-      /** Watermark */
+      /** 水印 */
       watermark: {
-        /** Whether to show the watermark */
+        /** 是否显示水印 */
         visible: boolean;
-        /** Watermark text */
+        /** 水印文本 */
         text: string;
       };
-      /** define some theme settings tokens, will transform to css variables */
+      /** 定义一些主题设置令牌，将转换为CSS变量 */
       tokens: {
         light: ThemeSettingToken;
         dark?: {
@@ -133,7 +133,7 @@ declare namespace App {
     type BaseToken = Record<string, Record<string, string>>;
 
     interface ThemeSettingTokenColor {
-      /** the progress bar color, if not set, will use the primary color */
+      /** 进度条颜色，如果未设置，将使用主色调 */
       nprogress?: string;
       container: string;
       layout: string;
@@ -154,14 +154,14 @@ declare namespace App {
 
     type ThemeTokenColor = ThemePaletteColor & ThemeSettingTokenColor;
 
-    /** Theme token CSS variables */
+    /** 主题令牌CSS变量 */
     type ThemeTokenCSSVars = {
       colors: ThemeTokenColor & { [key: string]: string };
       boxShadow: ThemeSettingTokenBoxShadow & { [key: string]: string };
     };
   }
 
-  /** Global namespace */
+  /** 全局命名空间 */
   namespace Global {
     type VNode = import('vue').VNode;
     type RouteLocationNormalizedLoaded = import('vue-router').RouteLocationNormalizedLoaded;
@@ -170,17 +170,17 @@ declare namespace App {
     type RoutePath = import('@elegant-router/types').RoutePath;
     type LastLevelRouteKey = import('@elegant-router/types').LastLevelRouteKey;
 
-    /** The global header props */
+    /** 全局头部属性 */
     interface HeaderProps {
-      /** Whether to show the logo */
+      /** 是否显示logo */
       showLogo?: boolean;
-      /** Whether to show the menu toggler */
+      /** 是否显示菜单切换器 */
       showMenuToggler?: boolean;
-      /** Whether to show the menu */
+      /** 是否显示菜单 */
       showMenu?: boolean;
     }
 
-    /** The global menu */
+    /** 全局菜单 */
     type Menu = {
       /**
        * The menu key
@@ -188,31 +188,31 @@ declare namespace App {
        * Equal to the route key
        */
       key: string;
-      /** The menu label */
+      /** 菜单标签 */
       label: string;
-      /** The menu i18n key */
+      /** 菜单国际化键 */
       i18nKey?: I18n.I18nKey | null;
-      /** The route key */
+      /** 路由键 */
       routeKey: RouteKey;
-      /** The route path */
+      /** 路由路径 */
       routePath: RoutePath;
-      /** The menu icon */
+      /** 菜单图标 */
       icon?: () => VNode;
-      /** The tooltip title */
+      /** 工具提示标题 */
       title?: string;
-      /** The menu children */
+      /** 菜单子项 */
       children?: Menu[];
     };
 
-    /** Tab route */
+    /** 标签页路由 */
     type TabRoute = Pick<RouteLocationNormalizedLoaded, 'name' | 'path' | 'meta'> &
       Partial<Pick<RouteLocationNormalizedLoaded, 'fullPath' | 'query' | 'matched'>>;
 
-    /** The global tab */
+    /** 全局标签页 */
     type Tab = {
-      /** The tab id */
+      /** 标签页ID */
       id: string;
-      /** The tab label */
+      /** 标签页标签 */
       label: string;
       /**
        * The new tab label
@@ -226,13 +226,13 @@ declare namespace App {
        * when reset the tab label, the tab label will be replaced by this value
        */
       oldLabel?: string;
-      /** The tab route key */
+      /** 标签页路由键 */
       routeKey: LastLevelRouteKey;
-      /** The tab route path */
+      /** 标签页路由路径 */
       routePath: RouteMap[LastLevelRouteKey];
-      /** The tab route full path */
+      /** 标签页路由完整路径 */
       fullPath: string;
-      /** The tab fixed index */
+      /** 标签页固定索引 */
       fixedIndex?: number | null;
       /**
        * Tab icon
@@ -246,14 +246,14 @@ declare namespace App {
        * Local icon
        */
       localIcon?: string;
-      /** I18n key */
+      /** 国际化键 */
       i18nKey?: I18n.I18nKey | null;
     };
 
-    /** Form rule */
+    /** 表单规则 */
     type FormRule = import('ant-design-vue/es/form/interface.d.ts').Rule;
 
-    /** The global dropdown key */
+    /** 全局下拉菜单键 */
     type DropdownKey = 'closeCurrent' | 'closeOther' | 'closeLeft' | 'closeRight' | 'closeAll';
   }
 
@@ -687,15 +687,15 @@ declare namespace App {
     }
   }
 
-  /** Service namespace */
+  /** 服务命名空间 */
   namespace Service {
-    /** Other baseURL key */
+    /** 其他基础URL键 */
     type OtherBaseURLKey = 'demo';
 
     interface ServiceConfigItem {
-      /** The backend service base url */
+      /** 后端服务基础URL */
       baseURL: string;
-      /** The proxy pattern of the backend service base url */
+      /** 后端服务基础URL的代理模式 */
       proxyPattern: string;
     }
 

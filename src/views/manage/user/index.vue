@@ -24,8 +24,8 @@ const {
   apiParams: {
     current: 1,
     size: 10,
-    // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
-    // the value can not be undefined, otherwise the property in Form will not be reactive
+    // 如果要在表单中使用 searchParams，需要定义以下属性，并且值为 null
+    // 值不能是 undefined，否则表单中的属性将不是响应式的
     status: undefined,
     userName: undefined,
     userGender: undefined,
@@ -146,15 +146,15 @@ const {
 } = useTableOperate(data, getData);
 
 async function handleBatchDelete() {
-  // request
-  // console.log(checkedRowKeys.value);
+  // 请求
+        // console.log(checkedRowKeys.value);
 
   onBatchDeleted();
 }
 
 function handleDelete(id: number) {
-  // request
-  console.log(id);
+  // 请求
+        console.log(id);
 
   onDeleted();
 }

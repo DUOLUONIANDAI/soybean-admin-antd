@@ -41,7 +41,7 @@ export function useFormRules() {
     email: [createRequiredRule($t('form.email.required')), patternRules.email]
   } satisfies Record<string, App.Global.FormRule[]>;
 
-  /** the default required rule */
+  /** 默认必填规则 */
   const defaultRequiredRule = createRequiredRule($t('form.required'));
 
   function createRequiredRule(message: string) {
@@ -51,7 +51,7 @@ export function useFormRules() {
     };
   }
 
-  /** create a rule for confirming the password */
+  /** 创建确认密码的规则 */
   function createConfirmPwdRule(pwd: string | Ref<string> | ComputedRef<string>) {
     const confirmPwdRule: App.Global.FormRule[] = [
       { required: true, message: $t('form.confirmPwd.required') },

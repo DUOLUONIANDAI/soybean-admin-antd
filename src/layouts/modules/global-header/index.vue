@@ -13,11 +13,11 @@ defineOptions({
 });
 
 interface Props {
-  /** Whether to show the logo */
+  /** 是否显示logo */
   showLogo?: App.Global.HeaderProps['showLogo'];
-  /** Whether to show the menu toggler */
+  /** 是否显示菜单切换器 */
   showMenuToggler?: App.Global.HeaderProps['showMenuToggler'];
-  /** Whether to show the menu */
+  /** 是否显示菜单 */
   showMenu?: App.Global.HeaderProps['showMenu'];
 }
 

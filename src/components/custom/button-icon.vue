@@ -7,15 +7,15 @@ defineOptions({
 });
 
 interface Props {
-  /** Button class */
+  /** 按钮类名 */
   class?: string;
-  /** Iconify icon name */
+  /** Iconify图标名称 */
   icon?: string;
-  /** Tooltip content */
+  /** 工具提示内容 */
   tooltipContent?: string;
-  /** Tooltip placement */
+  /** 工具提示位置 */
   tooltipPlacement?: TooltipPlacement;
-  /** Trigger tooltip on parent */
+  /** 在父元素上触发工具提示 */
   triggerParent?: boolean;
 }
 

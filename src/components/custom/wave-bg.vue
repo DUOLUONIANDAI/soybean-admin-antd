@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { getColorPalette } from '@sa/utils';
 
 interface Props {
-  /** Theme color */
+  /** 主题颜色 */
   themeColor: string;
 }
 

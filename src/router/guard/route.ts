@@ -12,9 +12,9 @@ import { useRouteStore } from '@/store/modules/route';
 import { localStg } from '@/utils/storage';
 
 /**
- * create route guard
+ * 创建路由守卫
  *
- * @param router router instance
+ * @param router 路由器实例
  */
 export function createRouteGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -68,9 +68,9 @@ export function createRouteGuard(router: Router) {
 }
 
 /**
- * initialize route
+ * 初始化路由
  *
- * @param to to route
+ * @param to 目标路由
  */
 async function initRoute(to: RouteLocationNormalized): Promise<RouteLocationRaw | null> {
   const routeStore = useRouteStore();
@@ -98,14 +98,14 @@ async function initRoute(to: RouteLocationNormalized): Promise<RouteLocationRaw 
   const isLogin = Boolean(localStg.get('token'));
 
   if (!isLogin) {
-    // if the user is not logged in and the route is a constant route but not the "not-found" route, then it is allowed to access.
+    // 如果用户未登录且路由是常量路由但不是'not-found'路由，则允许访问。
     if (to.meta.constant && !isNotFoundRoute) {
       routeStore.onRouteSwitchWhenNotLoggedIn();
 
       return null;
     }
 
-    // if the user is not logged in, then switch to the login page
+    // 如果用户未登录，则切换到登录页面
     const loginRoute: RouteKey = 'login';
     const query = getRouteQueryOfLoginRoute(to, routeStore.routeHome);
 
@@ -118,10 +118,10 @@ async function initRoute(to: RouteLocationNormalized): Promise<RouteLocationRaw 
   }
 
   if (!routeStore.isInitAuthRoute) {
-    // initialize the auth route
+    // 初始化认证路由
     await routeStore.initAuthRoute();
 
-    // the route is captured by the "not-found" route because the auth route is not initialized
+    // 由于认证路由未初始化，路由被'not-found'路由捕获
     // after the auth route is initialized, redirect to the original route
     if (isNotFoundRoute) {
       const rootRoute: RouteKey = 'root';

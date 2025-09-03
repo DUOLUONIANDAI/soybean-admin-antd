@@ -158,7 +158,7 @@ function transformElegantRouteToVueRoute(
 }
 
 /**
- * map of route name and route path
+ * 路由名称和路由路径的映射
  */
 const routeMap: RouteMap = {
   "root": "/",
@@ -207,16 +207,16 @@ const routeMap: RouteMap = {
 };
 
 /**
- * get route path by route name
- * @param name route name
+ * 通过路由名称获取路由路径
+ * @param name 路由名称
  */
 export function getRoutePath<T extends RouteKey>(name: T) {
   return routeMap[name];
 }
 
 /**
- * get route name by route path
- * @param path route path
+ * 通过路由路径获取路由名称
+ * @param path 路由路径
  */
 export function getRouteName(path: RoutePath) {
   const routeEntries = Object.entries(routeMap) as [RouteKey, RoutePath][];

@@ -22,10 +22,10 @@ const NOT_FOUND_ROUTE: CustomRoute = {
   }
 };
 
-/** builtin routes, it must be constant and setup in vue-router */
+/** 内置路由，必须是常量并且在vue-router中设置 */
 const builtinRoutes: CustomRoute[] = [ROOT_ROUTE, NOT_FOUND_ROUTE];
 
-/** create builtin vue routes */
+/** 创建内置vue路由 */
 export function createBuiltinVueRoutes() {
   return transformElegantRoutesToVueRoutes(builtinRoutes, layouts, views);
 }

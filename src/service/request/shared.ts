@@ -3,6 +3,13 @@ import { localStg } from '@/utils/storage';
 import { fetchRefreshToken } from '../api';
 import type { RequestInstanceState } from './type';
 
+/**
+* 获取授权头信息
+*
+* 从本地存储中获取token，并生成对应的Authorization头信息
+*
+* @returns Authorization头信息，如果本地存储中没有token则返回null
+*/
 export function getAuthorization() {
   const token = localStg.get('token');
   const Authorization = token ? `Bearer ${token}` : null;
@@ -10,7 +17,7 @@ export function getAuthorization() {
   return Authorization;
 }
 
-/** refresh token */
+/** 刷新token */
 async function handleRefreshToken() {
   const { resetStore } = useAuthStore();
 
